@@ -36,19 +36,19 @@ export class TodoList {
         const todoListElem = document.querySelector('#todo-list');
         
         const todoContainer = document.createElement('div');
-        
-        const todoCheckbox = document.createElement('input')
-        todoCheckbox.setAttribute('type', 'checkbox');
-        todoContainer.appendChild(todoCheckbox);
+        todoContainer.classList.add('todo')
 
+        todoContainer.innerHTML = `
+                                  <span>${todo.todo}</span>
+                                  </br>
+                                  <span>${todo.dueDate}</span>
+                                  `
+        ;
+        // add delete icon
         const deleteIcon = document.createElement('img');
         deleteIcon.src = trashIcon;
         deleteIcon.alt = 'trash icon';
         deleteIcon.classList.add('trashIcon')
-        todoContainer.innerHTML = `<span>${todo.todo}</span></br>
-                        <span>${todo.dueDate}</span>`
-        ;
-        // add delete icon
         todoContainer.appendChild(deleteIcon);
 
         // delete todo when trash icon clicked 

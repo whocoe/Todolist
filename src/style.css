@@ -29,6 +29,24 @@ form {
   align-items: center;
 }
 
+#todo-list {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.todo {
+  width: 150px;
+  height: 75px;
+  padding: 10px;
+  background: rgb(77, 121, 255);
+}
+
+.checkTodo {
+  color: white;
+}
+
 .trashIcon {
   width: 20px;
   height: 20px;
