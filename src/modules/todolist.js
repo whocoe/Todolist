@@ -25,9 +25,15 @@ export class TodoList {
   
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
-      this.todos[todoIndex].completed = true;
-      console.log(this.todos);
-      this.saveTodo();
+      if (todo.completed == false) {
+        this.todos[todoIndex].completed = true;
+        this.saveTodo();
+        console.log(this.todos);
+      } else {
+        this.todos[todoIndex].completed = false;
+        this.saveTodo();
+        console.log(this.todos);
+      }
     }
 
     displayTodo(todo) {
