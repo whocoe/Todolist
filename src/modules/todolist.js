@@ -4,11 +4,7 @@ export class Todo {
     constructor(todo, dueDate) {
       this.todo = todo;
       this.dueDate = dueDate;
-      this.completeted = false;
-    }
-  
-    complete() {
-      this.completeted = true;
+      this.completed = false;
     }
   }
   
@@ -27,11 +23,13 @@ export class TodoList {
       this.saveTodo();
     }
   
-    completeTodo(index) {
-      this.todos[index].complete();
+    completeTodo(todo) {
+      const todoIndex = this.todos.indexOf(todo);
+      this.todos[todoIndex].completed = true;
+      console.log(this.todos);
       this.saveTodo();
     }
-  
+
     displayTodo(todo) {
         const todoListElem = document.querySelector('#todo-list');
         
@@ -50,13 +48,7 @@ export class TodoList {
         todoContainer.appendChild(todoCheck);
         todoContainer.appendChild(todoName);
         todoContainer.appendChild(todoDueDate);
-        // todoContainer.innerHTML = `
-        //                           <span>${todo.todo}</span>
-        //                           </br>
-        //                           <span>${todo.dueDate}</span>
-        //                           `
-        // ;
-        // add delete icon
+
         const deleteIcon = document.createElement('img');
         deleteIcon.src = trashIcon;
         deleteIcon.alt = 'trash icon';
@@ -70,8 +62,13 @@ export class TodoList {
           this.saveTodo();
         })
 
-        // complete task
-        
+        // mark complete
+        todoContainer.addEventListener('click', e => {
+          if (e.target.classList.contains('check')) {
+            this.completeTodo(todo);
+          }
+        })
+
         todoListElem.appendChild(todoContainer);
     }
 
