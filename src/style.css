@@ -27,6 +27,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-template-columns: auto 20px;
 }
 
 #todo-list {
@@ -37,20 +38,39 @@ form {
 }
 
 .todo {
-  width: 150px;
-  height: 75px;
+  width: 300px;
+  height: auto;
   padding: 10px;
   background: rgb(77, 121, 255);
+  display: grid;
+  grid-template-columns: 25px 230px 25px;
+  grid-template-rows: minmax(2, auto);
 }
 
+.check {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+}
+
+.todoName {
+  grid-column: 2 / 3;
+}
+
+.todoDueDate {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.trashIcon {
+  grid-row: 2 / 3;
+  width: 20px;
+  height: 20px;
+}
 .checkTodo {
   color: white;
 }
 
-.trashIcon {
-  width: 20px;
-  height: 20px;
-}
 
 .trashIcon:hover {
   cursor: pointer;
@@ -61,6 +81,11 @@ input {
   height: 30px;
   border-radius: 8px;
   padding: 5px;
+}
+
+.check {
+  width: 15px;
+  height: 15px;
 }
 
 button {

@@ -37,13 +37,25 @@ export class TodoList {
         
         const todoContainer = document.createElement('div');
         todoContainer.classList.add('todo')
+        const todoName = document.createElement('p');
+        todoName.classList.add('todoName');
+        todoName.innerText = todo.todo;
+        const todoDueDate = document.createElement('p');
+        todoDueDate.classList.add('todoDueDate');
+        todoDueDate.innerText = todo.dueDate;
+        const todoCheck = document.createElement('input');
+        todoCheck.classList.add('check');
+        todoCheck.type = 'checkbox';
 
-        todoContainer.innerHTML = `
-                                  <span>${todo.todo}</span>
-                                  </br>
-                                  <span>${todo.dueDate}</span>
-                                  `
-        ;
+        todoContainer.appendChild(todoCheck);
+        todoContainer.appendChild(todoName);
+        todoContainer.appendChild(todoDueDate);
+        // todoContainer.innerHTML = `
+        //                           <span>${todo.todo}</span>
+        //                           </br>
+        //                           <span>${todo.dueDate}</span>
+        //                           `
+        // ;
         // add delete icon
         const deleteIcon = document.createElement('img');
         deleteIcon.src = trashIcon;
