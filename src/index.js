@@ -23,9 +23,25 @@ todoForm.addEventListener('submit', e => {
 })
 
 // load todos from local storage
-const storedTodo = JSON.parse(localStorage.getItem('todos'));
-if(storedTodo !== '') {
-    storedTodo.forEach(element => {
-        todoList.displayTodo(element);
-    });
-}
+window.addEventListener('load', () => {
+    const storedTodo = JSON.parse(localStorage.getItem('todos'));
+    if(storedTodo != '') {
+        storedTodo.forEach(element => {
+            todoList.displayTodo(element);
+            if (element.completed == true) {
+                const todos = document.querySelectorAll('.todo');
+                todos.forEach(todo => {
+                    if (todo.childNodes[1].textContent === element.todo) {
+                        todo.childNodes[0].classList.add('markCheck');
+                        const markCheck = document.querySelectorAll('.markCheck');
+                        markCheck.forEach(check => {
+                            check.checked = true;
+                        })
+                    }
+                })
+            }
+        });
+    } else {
+        return
+    }
+})

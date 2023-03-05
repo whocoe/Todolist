@@ -28,11 +28,9 @@ export class TodoList {
       if (todo.completed == false) {
         this.todos[todoIndex].completed = true;
         this.saveTodo();
-        console.log(this.todos);
       } else {
         this.todos[todoIndex].completed = false;
         this.saveTodo();
-        console.log(this.todos);
       }
     }
 
